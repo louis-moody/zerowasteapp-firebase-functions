@@ -10,3 +10,6 @@ git push -u origin master
  git remote add origin https://Eruqul@github.com/Eruqul/zero_app_function.git
 git branch -M master
 git push -u origin master
+
+Following this guide.(#7)
+https://firebase.google.com/docs/functions/typescript

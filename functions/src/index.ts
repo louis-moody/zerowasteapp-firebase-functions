@@ -11,11 +11,11 @@ const db = admin.firestore();
 
 const statsService = new StatsService();
 //
-exports.overviewStats = functions.https.onRequest(async (request, res) => {
-// exports.overviewStats = functions.https.onCall(async (request, res) => {
+// exports.overviewStats = functions.https.onRequest(async (request, res) => {
+exports.overviewStats = functions.https.onCall(async (request, res) => {
     
-    var profileId = 'HeHYkQo36B85oNLINngt';
-    // var profileId = request['profileId'];
+    // var profileId = 'HeHYkQo36B85oNLINngt';
+    var profileId = request['profileId'];
 
     var user = await db.collection('profiles').doc(profileId).get();
     var user_id = "";
@@ -34,10 +34,11 @@ exports.overviewStats = functions.https.onRequest(async (request, res) => {
         const stats = await statsService.test(recordId, profileId);
 
 
-        // return stats;
-        res.send(JSON.stringify(stats)); return;
+        return stats;
+        // res.send(JSON.stringify(stats)); return;
     }
-    catch (error) {
+    catch (error) 
+    {
         return error;
         // res.status(400).send(error);
     }
